@@ -1,5 +1,5 @@
 <category>
-    <pattern>ONE TIME I *</pattern>
+    <pattern>*</pattern>
     <template>
         <random>
             <li>Go on.</li>
