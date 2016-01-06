@@ -1,0 +1,4 @@
+[] Jakie pliki xmli ściągać z serwera nbp?
+	Tylko dzisiejsze, czy też z dwóch/jednego dnia do tyłu?
+[] Jaki pattern zrobić na pytania? Proste "dolar" czy jaki jest kurs dolara?
+[] Jak podzielić kupno i sprzedaż? "dolar kupno/sprzedaż" ? Czy ściągać kurs średni?[] Ściągać kursy wcześniej i dopiero je parsować? Czy ściągać po zapytaniu?
