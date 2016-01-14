@@ -9,13 +9,14 @@ import re
 
 #tabela z kursami kupna i sprzedaży walut obcych
 adres_tabeli_C = "http://www.nbp.pl/kursy/xml/dir.aspx?tt=C"
+url_tables_dir = "http://www.nbp.pl/kursy/xml/"
 tabela_C = urllib2.urlopen(adres_tabeli_C)
 #w niej trzeba znaleźć xml z dzisiaj
 
 now = datetime.datetime.now()
 
 # zbuduj część nazwy pliku z dzisiejszymi kursami walut
-part_filename = str(now.day) + str(now.month) + str((now.year)[-2:]) + '.xml'
+part_filename = str(now.year)[-2:] + str(now.month).zfill(2) + str(now.day) + '.xml'
 
 # poszukaj regex dalszej części pliku
 matches = re.search("c[A-Za-z0-9]*" + part_filename, tabela_C.read())
@@ -28,7 +29,8 @@ actual_exchanges = matches.group()
 # http://www.nbp.pl/kursy/xml/dir.aspx?tt=C
 # pod kątem tego pliku z aktualną datą
 # pobierz ten plik
-exchange_rates_site = urllib2.urlopen(actual_exchanges)
+
+exchange_rates_site = urllib2.urlopen(url_tables_dir + actual_exchanges)
 exchange_rates_fd = open('exchange_rates.xml','wb')
 exchange_rates_fd.write(exchange_rates_site.read())
 exchange_rates_fd.close()
