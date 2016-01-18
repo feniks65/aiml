@@ -7,6 +7,23 @@ import urllib2
 import datetime
 import re
 
+def getSiteWithExchangeRates( adres_tabC ):
+	date_now = datetime.datetime.now()
+	daydelta = datetime.timedelta(days=1)
+
+	part_filename = str(now.year)[-2:] + str(now.month).zfill(2) + str(now.day) + '.xml'
+	tabela_C = urllib2.urlopen(adres_tabC)
+	if None == tabela_C:
+		print "Nie mogę pobrać strony z tabelą C"
+		return None
+	else:
+		matches = re.search("c[A-Za-z0-9]*" + part_filename, tabela_C.read())
+		while None == matches:
+			part_filename = str(now.year)[-2:] + str(now.month).zfill(2) + str((now-daydelta).day) + '.xml'
+			matches = re.search("c[A-Za-z0-9]*" + part_filename, tabela_C.read())
+	return matches.group()	
+
+
 #tabela z kursami kupna i sprzedaży walut obcych
 adres_tabeli_C = "http://www.nbp.pl/kursy/xml/dir.aspx?tt=C"
 url_tables_dir = "http://www.nbp.pl/kursy/xml/"
@@ -20,6 +37,9 @@ part_filename = str(now.year)[-2:] + str(now.month).zfill(2) + str(now.day) + '.
 
 # poszukaj regex dalszej części pliku
 matches = re.search("c[A-Za-z0-9]*" + part_filename, tabela_C.read())
+if None == matches:
+	print "Nie znaleziono strony dla dzisiejszego dnia, szukam kursow dla wczoraj lub przedwczoraj"
+
 
 # dzisiejsza strona z kursami walut
 actual_exchanges = matches.group()
