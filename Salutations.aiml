@@ -27,7 +27,7 @@
 <!-- as adopted by the ALICE A.I. Foundation. -->
 <!-- Last modified July 26, 2007 -->
   
-<category><pattern>* BYE</pattern><template>OK see you later <get name="name"/>.</template></category>      
+<category><pattern>* CZESC</pattern><template>OK see you later <get name="name"/>.</template></category>      
 <category><pattern>ADIEU</pattern><template><srai>good bye</srai></template></category>      
 <category><pattern>ADIOS *</pattern><template>   <srai>bye</srai>    </template></category>      
 <category><pattern>ADIOS</pattern><template>   <srai>bye</srai>    </template></category>      
