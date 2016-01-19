@@ -11,7 +11,7 @@ def getSiteWithExchangeRates( adres_tabC ):
 	date_now = datetime.datetime.now()
 	daydelta = datetime.timedelta(days=1)
 
-	part_filename = str(now.year)[-2:] + str(now.month).zfill(2) + str(now.day) + '.xml'
+	part_filename = str(date_now.year)[-2:] + str(date_now.month).zfill(2) + str(date_now.day) + '.xml'
 	tabela_C = urllib2.urlopen(adres_tabC)
 	if None == tabela_C:
 		print "Nie mogę pobrać strony z tabelą C"
@@ -19,7 +19,7 @@ def getSiteWithExchangeRates( adres_tabC ):
 	else:
 		matches = re.search("c[A-Za-z0-9]*" + part_filename, tabela_C.read())
 		while None == matches:
-			part_filename = str(now.year)[-2:] + str(now.month).zfill(2) + str((now-daydelta).day) + '.xml'
+			part_filename = str(date_now.year)[-2:] + str(date_now.month).zfill(2) + str((date_now-daydelta).day) + '.xml'
 			matches = re.search("c[A-Za-z0-9]*" + part_filename, tabela_C.read())
 	return matches.group()	
 
@@ -27,22 +27,9 @@ def getSiteWithExchangeRates( adres_tabC ):
 #tabela z kursami kupna i sprzedaży walut obcych
 adres_tabeli_C = "http://www.nbp.pl/kursy/xml/dir.aspx?tt=C"
 url_tables_dir = "http://www.nbp.pl/kursy/xml/"
-tabela_C = urllib2.urlopen(adres_tabeli_C)
-#w niej trzeba znaleźć xml z dzisiaj
-
-now = datetime.datetime.now()
-
-# zbuduj część nazwy pliku z dzisiejszymi kursami walut
-part_filename = str(now.year)[-2:] + str(now.month).zfill(2) + str(now.day) + '.xml'
-
-# poszukaj regex dalszej części pliku
-matches = re.search("c[A-Za-z0-9]*" + part_filename, tabela_C.read())
-if None == matches:
-	print "Nie znaleziono strony dla dzisiejszego dnia, szukam kursow dla wczoraj lub przedwczoraj"
-
 
 # dzisiejsza strona z kursami walut
-actual_exchanges = matches.group()
+actual_exchanges = getSiteWithExchangeRates(adres_tabeli_C) 
 
 #sciagnij plik z serwera z nbpu do pliku
 # pobierz aktualną datę, przeszukaj stronę
@@ -69,7 +56,7 @@ Potrzebuje jakiegoś xmla z najczęściej zadawanymi pytaniami i odpowiedziami p
 muszę go załadować.
 """
 
-bot.learn("UI.aiml")
+#bot.learn("UI.aiml")
 bot.learn("Default.aiml")
 bot.learn("Knowledge.aiml")
 bot.learn("Salutations.aiml")
