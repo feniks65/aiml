@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import aiml
-import xml.etree.cElementTree as ET
+import xml.etree.ElementTree as ElementTree
 import urllib2
 import datetime
 import re
@@ -40,10 +40,10 @@ actual_exchanges = getSiteWithExchangeRates(adres_tabeli_C)
 exchange_rates_site = urllib2.urlopen(url_tables_dir + actual_exchanges)
 exchange_rates_fd = open('exchange_rates.xml','wb')
 exchange_rates_fd.write(exchange_rates_site.read())
-exchange_rates_fd.close()
+#exchange_rates_fd.close()
 
 #załaduj plik dane z xml'a
-# tree = ET.ElementTree(file='exchange_rates.xml')
+#tree = ElementTree.fromstring(exchange_rates_site.read())
 
 bot = aiml.Kernel()
 bot.setBotPredicate("name", "Alex")
