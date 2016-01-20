@@ -24,6 +24,17 @@ def getSiteWithExchangeRates( adres_tabC ):
 	return matches.group()	
 
 
+def transformNbpXmlToAiml( file_path )
+	"""Funkcja zwróci ścieżkę do xmla z odpowiednimi zwrotami do załadowanie do parsera aiml"""
+	
+	#załaduj plik dane z xml'a
+	tree = ElementTree.parse('exchange_rates.xml')
+	root = tree.getroot()
+
+	for child in root:
+		print child.tag, child.attrib
+	
+
 #tabela z kursami kupna i sprzedaży walut obcych
 adres_tabeli_C = "http://www.nbp.pl/kursy/xml/dir.aspx?tt=C"
 url_tables_dir = "http://www.nbp.pl/kursy/xml/"
