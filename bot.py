@@ -23,9 +23,8 @@ def getSiteWithExchangeRates( adres_tabC ):
 			matches = re.search("c[A-Za-z0-9]*" + part_filename, tabela_C.read())
 	return matches.group()	
 
-
-def transformNbpXmlToAiml( file_path )
-	"""Funkcja zwróci ścieżkę do xmla z odpowiednimi zwrotami do załadowanie do parsera aiml"""
+"""
+def transformNbpXmlToAiml( file_path ):
 	
 	#załaduj plik dane z xml'a
 	tree = ElementTree.parse('exchange_rates.xml')
@@ -33,7 +32,7 @@ def transformNbpXmlToAiml( file_path )
 
 	for child in root:
 		print child.tag, child.attrib
-	
+"""	
 
 #tabela z kursami kupna i sprzedaży walut obcych
 adres_tabeli_C = "http://www.nbp.pl/kursy/xml/dir.aspx?tt=C"
@@ -53,12 +52,7 @@ exchange_rates_fd = open('exchange_rates.xml','wb')
 exchange_rates_fd.write(exchange_rates_site.read())
 exchange_rates_fd.close()
 
-#załaduj plik dane z xml'a
-tree = ElementTree.parse('exchange_rates.xml')
-root = tree.getroot()
-
-for child in root:
-	print child.tag, child.attrib
+os.system("python parse.py")
 
 bot = aiml.Kernel()
 bot.setBotPredicate("name", "Alex")
@@ -71,7 +65,7 @@ Potrzebuje jakiegoś xmla z najczęściej zadawanymi pytaniami i odpowiedziami p
 muszę go załadować.
 """
 
-#bot.learn("UI.aiml")
+bot.learn("kursy_walut.aiml")
 bot.learn("Default.aiml")
 bot.learn("Knowledge.aiml")
 bot.learn("Salutations.aiml")
