@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ElementTree
 import urllib2
 import datetime
 import re
+import os
 
 def getSiteWithExchangeRates( adres_tabC ):
 	date_now = datetime.datetime.now()
@@ -49,8 +50,12 @@ actual_exchanges = getSiteWithExchangeRates(adres_tabeli_C)
 
 exchange_rates_site = urllib2.urlopen(url_tables_dir + actual_exchanges)
 exchange_rates_fd = open('exchange_rates.xml','wb')
-exchange_rates_fd.write(exchange_rates_site.read())
+exchange_rates_decode_encode = exchange_rates_site.read().decode('iso-8859-1').encode('utf8')
+exchange_rates_fd.write(exchange_rates_decode_encode)
 exchange_rates_fd.close()
+
+#zdekoduj xmla z echange_rates.xml
+#apple.decode('iso-8859-1').encode('utf8')
 
 os.system("python parse.py")
 
@@ -65,8 +70,9 @@ Potrzebuje jakiegoś xmla z najczęściej zadawanymi pytaniami i odpowiedziami p
 muszę go załadować.
 """
 
+bot.learn("IU.aiml")
 bot.learn("kursy_walut.aiml")
-bot.learn("Default.aiml")
+#bot.learn("Default.aiml")
 bot.learn("Knowledge.aiml")
 bot.learn("Salutations.aiml")
 bot.learn("random_answers.xml")

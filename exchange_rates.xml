@@ -4,7 +4,7 @@
    <data_notowania>2016-01-20</data_notowania>
    <data_publikacji>2016-01-21</data_publikacji>
    <pozycja>
-      <nazwa_waluty>dolar amerykañski</nazwa_waluty>
+      <nazwa_waluty>dolar amerykaÃ±ski</nazwa_waluty>
       <przelicznik>1</przelicznik>
       <kod_waluty>USD</kod_waluty>
       <kurs_kupna>4,0729</kurs_kupna>
@@ -32,7 +32,7 @@
       <kurs_sprzedazy>4,5344</kurs_sprzedazy>
    </pozycja>
    <pozycja>
-      <nazwa_waluty>forint (Wêgry)</nazwa_waluty>
+      <nazwa_waluty>forint (WÃªgry)</nazwa_waluty>
       <przelicznik>100</przelicznik>
       <kod_waluty>HUF</kod_waluty>
       <kurs_kupna>1,4103</kurs_kupna>
@@ -67,7 +67,7 @@
       <kurs_sprzedazy>0,1678</kurs_sprzedazy>
    </pozycja>
    <pozycja>
-      <nazwa_waluty>korona duñska</nazwa_waluty>
+      <nazwa_waluty>korona duÃ±ska</nazwa_waluty>
       <przelicznik>1</przelicznik>
       <kod_waluty>DKK</kod_waluty>
       <kurs_kupna>0,5955</kurs_kupna>
