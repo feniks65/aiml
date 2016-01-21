@@ -80,3 +80,4 @@ bot.learn("random_answers.xml")
 
 while True:
     print bot.respond(raw_input(" > "))
+
