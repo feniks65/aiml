@@ -65,7 +65,10 @@ bot.setBotPredicate("master", "Wojtek")
 #bot.learn("random_answers.xml")
 #bot.learn("Religion.aiml")
 
-
+"""
+Potrzebuje jakiegoś xmla z najczęściej zadawanymi pytaniami i odpowiedziami po polsku i zamiast nich
+muszę go załadować.
+"""
 
 bot.learn("IU.aiml")
 bot.learn("kursy_walut.aiml")
